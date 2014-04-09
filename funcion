@@ -1,0 +1,32 @@
+double f(double x);
+#include "C_Begin.h"
+    //**
+    //funcion para evaluar f(x)
+    //***
+    //Declaracion de variables
+    double xInicial;
+    double x;
+    double y;
+    double incremento;
+    double limiteIteraciones;
+    int i;
+    xInicial = 1.41421356;
+    limiteIteraciones = 50;
+    incremento = 0.000000001;
+    x = xInicial;
+
+for (i = 0; i< limiteIteraciones;i=i+1)
+    {
+      //Invocacion
+      y = f(x);
+        printf("\n\t\t\tx = %12.8lf y = %12.8lf",x,y);
+        x = x + incremento;
+        }
+
+        #include "c_End.h"
+        double f(double x)
+        {
+            double resultado;
+            resultado = x*x - 2;
+            return resultado; //regresa el resultado tipo double
+        }
