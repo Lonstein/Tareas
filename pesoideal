@@ -1,0 +1,38 @@
+float pesoIdeal (int sexo,float altura);
+#include "C_Begin.h"
+    //***
+    //Calcula el peso ideal
+    //***
+    //Declara variables de trabajo
+    int sx;
+    float alt;
+    float pesoI;
+    int continuar;
+    do
+    {
+
+
+    sx = readInt("Sexo (1=hombre 2=mujer)");
+    alt = readFloat("Altura en mts. ");
+    pesoI = pesoIdeal(sx,alt);
+    printFloat2Dec("Peso ideal",pesoI);
+    continuar = askQuestion("Desea hacer otro calculo?");
+    }while(continuar);
+#include "C_End.h"
+float pesoIdeal(int sexo,float altura)
+{
+    float pesoIdeal;
+    altura = altura * 100;//Convertir la altura en cms.
+    if(sexo == 1)
+    {
+        pesoIdeal = ((altura - 152.4)/2.54)*2.7 + 48.124;
+    }
+    else
+    {
+        pesoIdeal = ((altura -152.4)/2.54)*2.27 + 45.4;
+    }
+    return pesoIdeal;
+}
+
+
+
