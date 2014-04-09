@@ -1,0 +1,160 @@
+int matEnteros[20][20];//Matriz
+float arrSuma[20];//Arreglo para la suma
+float arrPromedio[20];//Arreglo para el promedio
+float arrDiagonal[20];//Arreglo para guardar Diagonal
+int limiteRens = 20;//Numero máximo de renglones
+int limiteCols = 20;//Numero máximo de columnas
+int numRens;//Numero real de renglones
+int numCols;//Numero real de columnas
+int i;//Indice de renglones
+int j;//Indice de columnas
+float suma;
+float promedio;
+int numMayorDiagonal;
+void cargarMatrizEnteros();
+void printMatrizEnteros();
+void sumaRenxRen();
+void promedioxRen();
+void printArrSumaArrPromedio();
+void cargaArrDiagonal();
+void printArrDiagonal();
+void encuentraElmayorDeLaDiagonal();
+void sumaTodaLaMatriz();
+void imprimePromedioYSumaDeTodaLaMatriz();
+//
+#include "C_Begin.h"
+   //***
+   //Main  Matriz Suma y promedio Columna x Columna
+   //***
+   //cargar la matriz de enteros
+   cargarMatrizEnteros();
+   //Imprime la matriz de enteros
+   printMatrizEnteros();
+   sumaRenxRen();
+   promedioxRen();
+   printArrSumaArrPromedio();
+   cargaArrDiagonal();
+   printArrDiagonal();
+   encuentraElmayorDeLaDiagonal();
+   sumaTodaLaMatriz();
+   imprimePromedioYSumaDeTodaLaMatriz();
+#include "C_End.h"
+//
+void cargarMatrizEnteros()
+{
+   matEnteros[0][0]= 38;
+   matEnteros[0][1]= 10;
+   matEnteros[0][2]= 15;
+   matEnteros[0][3]= 40;
+   matEnteros[1][0]= 23;
+   matEnteros[1][1]= 14;
+   matEnteros[1][2]= 35;
+   matEnteros[1][3]= 50;
+   matEnteros[2][0]= 65;
+   matEnteros[2][1]= 80;
+   matEnteros[2][2]= 95;
+   matEnteros[2][3]= 35;
+   matEnteros[3][0]= 12;
+   matEnteros[3][1]= 45;
+   matEnteros[3][2]= 76;
+   matEnteros[3][3]= 57;
+   numRens = 4;//Numero real de renglones
+   numCols = 4 ;//Numero real de columnas
+}//Termina cargarMatrizEnteros()
+void printMatrizEnteros()
+{
+    printf("\n\t\t\tValores de la Matriz");//\n brinca renglon
+    for (i=0;i<numRens;i=i+1)
+       {
+        printf("\n\t\t\t");//Inicia un nuevo renglon
+        for (j=0;j<numCols;j=j+1)
+        {
+            //printf("matEnteros[%i][%i]=%i   ",i,j,matEnteros[i][j]);
+            printf(" %3i ",matEnteros[i][j]);
+        }
+       }
+}//Termina printMatrizEnteros()
+void sumaRenxRen()
+{
+    for (i=0;i<numRens;i=i+1)
+       {
+        arrSuma[i] = 0;
+        for (j=0;j<numCols;j=j+1)
+        {
+            arrSuma[i] = arrSuma[i] + matEnteros[i][j];
+        }
+       }
+}//Termina sumaRenxRen()
+void promedioxRen()
+{
+    for (i=0;i<numRens;i=i+1)
+       {
+        arrPromedio[i] = arrSuma[i]/numCols;
+       }
+}//Termina promedioxRen()
+void  printArrSumaArrPromedio()
+{
+    printf("\n\n\n\n\t\t\tValores de los Arreglos");
+    printf("\n\t\t\tRen.    Suma  Promedio");
+    for (i=0;i<numRens;i=i+1)
+       {
+        printf("\n\t\t\t%3i\t%3.2f\t%3.2f ",i,arrSuma[i],arrPromedio[i]);
+       }
+}//Termina printArrSumaArrPromedio()
+void cargaArrDiagonal()
+{
+    for (j=0;j<numCols;j=j+1)
+       {
+        for (i=0;i<numRens;i=i+1)
+        {
+            if(i==j)
+            {
+              arrDiagonal[j] = matEnteros[i][j];
+            }
+        }
+       }
+}//Termina cargaArrDiagonal();
+void  printArrDiagonal()
+{
+    printf("\n\n\n\n\t\t\tValores de la Diagonal");
+    printf("\n\t\t\tRenglon  Valor");
+    for (j=0;j<numCols;j=j+1)
+       {
+        printf("\n\t\t\t%3i\t%3.2f",j,arrDiagonal[j]);
+       }
+}//Termina printArrSumaArrPromedio()
+void encuentraElmayorDeLaDiagonal()
+{
+    int mayor =0;
+    for (i=0;i<numRens; i = i + 1)
+    {
+        if(arrDiagonal[i]> mayor)
+        {
+         mayor = arrDiagonal[i];
+        }
+     }
+     printInt("El numero mayor de la diagonal es ",mayor);
+}//Termina encuentraElmayorDeLaDiagonal()
+void sumaTodaLaMatriz()
+{
+    suma = 0;
+    for (i=0;i<numRens;i=i+1)
+       {
+        for (j=0;j<numCols;j=j+1)
+        {
+            suma = suma + matEnteros[i][j];
+        }
+       }
+       promedio = suma/(numRens*numCols);
+}//Termina sumaTodaLaMatriz()
+void imprimePromedioYSumaDeTodaLaMatriz()
+{
+    printFloat("Suma de todos los elementos ",suma);
+    printFloat("Promedio de todos los elementos ",promedio);
+
+}//Termina imprimePromedioYSumaDeTodaLaMatriz()
+//Por fin termina el programa
+
+
+
+
