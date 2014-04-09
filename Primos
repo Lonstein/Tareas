@@ -1,0 +1,36 @@
+int esPrimo(int n);
+#include "C_Begin.h"
+    //**
+    //Encuentra los numeros primos y los guarda en un arreglo
+    //***
+    //Declara variables de trabajo
+    int limite;
+    int i;
+    limite = readInt ("Limite ");
+    for (i=1;i<=limite;i=i+1)
+    {
+        if(esPrimo(i))
+        {
+            printInt ("El numero es primo ", i);
+        }
+
+    }
+    #include "C_End.h"
+    int esPrimo(int n)
+    {
+        int primo;
+        int i;
+        int residuo;
+        i = n - 1;
+        primo = true;
+        while((primo != 0 ) && (i > 1)) //&& and  || or
+        {
+            residuo = n%i;
+            if (residuo == 0)
+            {
+                primo = false;
+            }
+            i = i - 1;
+        }
+        return primo;
+    }//Termina esPrimo(int
